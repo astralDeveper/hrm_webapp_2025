@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "Poppins";
+}
+
+@layer utilities {
+  .mainContainer {
+    @apply md:w-[70%] w-[90%]
+  }
+  .authheading {
+    @apply lg:text-[52px] md:text-[40px] text-[28px] lg:leading-[68px] md:leading-[55px] sm:leading-[40px];
+  }
+  .authsubhead{
+    @apply lg:text-[24px] md:text-[20px] text-[16px] lg:leading-[36px] md:leading-[30px] sm:leading-[22px];
+  }
+  .authdesc{
+    @apply lg:text-[16px] md:text-[13px] text-[11px] lg:leading-[24px] md:leading-[20px] sm:leading-[16px];
+  }
+
+}
+
+
+.custom-scrollbar {
+  overflow: visible; /* Allow content to be fully visible */
+}
+
+/* For medium and larger screens - Enable overflow and custom scrollbar */
+@media (min-width: 768px) {
+  .custom-scrollbar {
+    overflow-y: scroll;
+    scrollbar-width: 0.1px; /* For Firefox */
+    -ms-overflow-style: none; /* For Internet Explorer/Edge */
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    -webkit-appearance: none;
+    height: 3px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: transparent;
+  }
+}

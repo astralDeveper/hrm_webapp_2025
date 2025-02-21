@@ -4,19 +4,19 @@ import { IMAGES } from "../Utils/images";
 import { RiArrowDropDownFill, RiMenuLine, RiCloseLine } from "@remixicon/react";
 import SearchBar from "./Searchbar";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleTheme } from "../redux/themeSlice";
+// import { toggleTheme } from "../redux/Slices/AuthSlice";
 
 const Header = () => {
-  const theme = useSelector((state) => state.theme.theme);
-  const dispatch = useDispatch();
+  // const theme = useSelector((state) => state.theme.theme);
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [theme]);
+  // useEffect(() => {
+  //   if (theme === "dark") {
+  //     document.documentElement.classList.add("dark");
+  //   } else {
+  //     document.documentElement.classList.remove("dark");
+  //   }
+  // }, [theme]);
 
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleMenu = () => {

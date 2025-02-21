@@ -8,26 +8,35 @@
 
 @layer utilities {
   .mainContainer {
-    @apply md:w-[70%] w-[90%]
+    @apply lg:w-[80%] w-[90%];
+  }
+  .flexCenter {
+    @apply flex items-center justify-center;
+  }
+  .gridTwo {
+    @apply grid md:grid-cols-2 grid-rows-1;
   }
   .authheading {
-    @apply lg:text-[52px] md:text-[40px] text-[28px] lg:leading-[68px] md:leading-[55px] sm:leading-[40px];
+    @apply 2xl:text-[54px] xl:text-[50px] lg:text-[38px] md:text-[30px] text-[25px] lg:leading-[68px] md:leading-[55px] sm:leading-[40px];
   }
-  .authsubhead{
-    @apply lg:text-[24px] md:text-[20px] text-[16px] lg:leading-[36px] md:leading-[30px] sm:leading-[22px];
+  .authsubhead {
+    @apply 2xl:text-[29px] lg:text-[24px] md:text-[20px] text-[16px] lg:leading-[36px] md:leading-[30px] sm:leading-[22px];
   }
-  .authdesc{
-    @apply lg:text-[16px] md:text-[13px] text-[11px] lg:leading-[24px] md:leading-[20px] sm:leading-[16px];
+  .subhead {
+    @apply 2xl:text-[24px] lg:text-[21px] md:text-[16px] text-[12px] lg:leading-[30px] md:leading-[25px] sm:leading-[18px];
   }
-
+  .authdesc {
+    @apply 2xl:text-[21px] lg:text-[17px] md:text-[14px] text-[12px] lg:leading-[24px] md:leading-[20px] sm:leading-[16px];
+  }
+  .inputtext {
+    @apply 2xl:text-[19px] lg:text-[15px] md:text-[13px] text-[11px] lg:leading-[18px] md:leading-[14px] sm:leading-[10px];
+  }
 }
-
 
 .custom-scrollbar {
-  overflow: visible; /* Allow content to be fully visible */
+  overflow: visible;
 }
 
-/* For medium and larger screens - Enable overflow and custom scrollbar */
 @media (min-width: 768px) {
   .custom-scrollbar {
     overflow-y: scroll;

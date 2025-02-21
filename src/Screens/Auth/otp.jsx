@@ -1,21 +1,22 @@
-import React, { useState, useRef, useEffect } from 'react';
-import AuthRightSide from './Components/AuthRightSide';
-import Button from '../../Components/Button';
-import { IMAGES } from '../../Utils/images';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useRef, useEffect } from "react";
+import AuthRightSide from "./Components/AuthRightSide";
+import Button from "../../Components/Button";
+import { IMAGES } from "../../Utils/images";
+import { useNavigate } from "react-router-dom";
+import { showToast } from "../../Components/toast";
 
 const Otp = () => {
-  const [code, setCode] = useState(['', '', '', '']);
+  const [code, setCode] = useState(["", "", "", ""]);
   const [timer, setTimer] = useState("00:30"); // Start with 30 seconds
   const inputRefs = [useRef(null), useRef(null), useRef(null), useRef(null)];
-  const Ref = useRef(null); 
-  
-  const navigate = useNavigate()
+  const Ref = useRef(null);
+
+  const navigate = useNavigate();
 
   const handleChange = (e, index) => {
     const value = e.target.value;
 
-    if (/\d/.test(value) || value === '') {
+    if (/\d/.test(value) || value === "") {
       const newCode = [...code];
       newCode[index] = value;
       setCode(newCode);
@@ -27,9 +28,9 @@ const Otp = () => {
   };
 
   const handleKeyDown = (e, index) => {
-    if (e.key === 'Backspace') {
+    if (e.key === "Backspace") {
       const newCode = [...code];
-      newCode[index] = '';
+      newCode[index] = "";
 
       if (index > 0 && !newCode[index]) {
         inputRefs[index - 1].current.focus();
@@ -40,28 +41,28 @@ const Otp = () => {
   };
 
   const Alert = () => {
-    alert("OTP sent to your email");
-    // onClickReset(); 
-    clearTimer(getDeadTime());  
+    showToast({ message: "OTP sent to your email", isError: false });
+
+    // onClickReset();
+    clearTimer(getDeadTime());
   };
 
   const getTimeRemaining = (endTime) => {
     const total = Date.parse(endTime) - Date.parse(new Date());
     const seconds = Math.floor((total / 1000) % 60);
-    const minutes = Math.floor((total / 1000 / 60) % 60); 
+    const minutes = Math.floor((total / 1000 / 60) % 60);
     return {
-      total, 
+      total,
       minutes,
       seconds,
     };
   };
 
   const startTimer = (endTime) => {
-    let { total,  minutes, seconds } = getTimeRemaining(endTime);
+    let { total, minutes, seconds } = getTimeRemaining(endTime);
     if (total >= 0) {
       setTimer(
-         
-          (minutes > 9 ? minutes : "0" + minutes) +
+        (minutes > 9 ? minutes : "0" + minutes) +
           ":" +
           (seconds > 9 ? seconds : "0" + seconds)
       );
@@ -92,33 +93,29 @@ const Otp = () => {
   }, []);
 
   const onClickReset = () => {
-    navigate('/setPassword')
-    // clearTimer(getDeadTime());  
+    navigate("/setPassword");
+    // clearTimer(getDeadTime());
   };
 
   return (
-    <div className="w-full grid md:grid-cols-2 grid-rows-1 bg-secondaryColor">
-      <div className="md:w-[70%] w-[90%]  mx-auto py-5 flex flex-col items-center justify-center h-screen">
+    <div className="w-full gridTwo bg-white">
+      <div className="mainContainer mx-auto py-5 flex-col flexCenter h-screen">
         <img
-          src={IMAGES.SIGNINIMG}
+          src={IMAGES.AUTH}
           className="block md:hidden mx-auto h-[200px] w-full my-2"
           alt="Logo"
         />
 
-        <div className='w-full'>
-          <div className="flex gap-4 items-center text2 text-start">
-            <p className="text2 font-medium text-white">Email Verification</p>
-            <img
-              src={IMAGES.AUTH_MESSAGE}
-              className="md:w-[35px] md:h-[35px] w-[20px] h-[20px]"
-            />
-          </div>
-
-          <p className="text8 font-medium text-white my-2">
-            Enter your 4 digits code that you received on your email.
+        <div className="w-full lg:my-8 my-4 ">
+          <p className="authheading font-semibold text-start text-black">
+            One Time Password
           </p>
 
-          <div className="flex md:gap-5 gap-1 justify-between">
+          <p className="authdesc inputtext font-normal text-black">
+            Enter your otp to reset your password.
+          </p>
+
+          <div className="flex md:my-8 mt-[20px] md:gap-5 gap-4 justify-between">
             {inputRefs.map((ref, index) => (
               <div
                 key={index}
@@ -126,7 +123,7 @@ const Otp = () => {
               >
                 <input
                   ref={ref}
-                  className="w-full p-4 focus:outline-none bg-transparent text8 text-center text-white"
+                  className="w-full p-4 focus:outline-none bg-transparent authdesc text-center text-black"
                   type="text"
                   maxLength={1}
                   value={code[index]}
@@ -137,18 +134,14 @@ const Otp = () => {
               </div>
             ))}
           </div>
-          
-          <p className='my-2 text-redColor text10 text-center'>{timer}</p>
-        <Button
-          onPress={onClickReset}
-          divstyle="w-full md:my-[10px] my-0 text-white bg-goldColor font-medium lg:py-3 py-2 text8 mt-5"
-          btnname="Verify"
-          type="submit"
-        />
-        </div>
-      
 
-        <p className="text-white text9 text-center mt-2">
+          <p className="mt-6 lg:mb-5 text-black authsubhead text-center">
+            {timer}
+          </p>
+          <Button onPress={onClickReset} btnname="Continue" type="submit" />
+        </div>
+
+        <p className="text-white authdesc text-center mt-2">
           If you didn't receive a code!
           <span
             onClick={Alert}

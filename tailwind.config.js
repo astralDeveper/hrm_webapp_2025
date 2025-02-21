@@ -7,15 +7,26 @@ export default {
       poppins: "Barlow",
     },
     extend: {
-      // backgroundImage: {
-      //   "hero-pattern": "url('../src/assets/images/herosec.png')",
-      // },
-
-      // darkMode: "class",
-
+      backgroundImage: { 
+        darkGrad: 'linear-gradient(to bottom, #5454D4, #A0A0F0)',
+      },
       colors: {
-        secondaryColor: "#3E3E3E",
+        secondaryColor: "#343434",
         placeHolder: "#A0A4AC",
+        formbackground: "#F3F8FB",
+        gray1: "#A6A6A6",
+        borderColor1: "#5454D4",
+        borderColor2: "#D0D0D0",
+
+        // Attendence Report Colors
+        pinkColor: "#F9E6EE",
+        pinkTextColor:"#FD397A",
+        greenColor: "#E0F3F0",
+        greenTextColor: "#0ABB87",
+        purpleColor: "#D5D9F6",
+        purpleTextColor: "#5867DD",
+        orangeColor: "#F9F3E5",
+        orangeTextColor: "#FFB823",
       },
       boxShadow: { 
         shadow2: "0 6px 20px -4px #e1c45b",

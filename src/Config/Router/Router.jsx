@@ -40,14 +40,13 @@
 // ];
 
 // // Dynamically create routes
- 
+
 // // Dynamically create routes with the correct file extension
 // const childrenRoutes = routesConfig.map(({ path, component, isIndex }) => ({
 //   path,
 //   index: isIndex || false,
-//   element: LazyLoad(lazy(() => import(`../../Screens/${component}.jsx`))),  
+//   element: LazyLoad(lazy(() => import(`../../Screens/${component}.jsx`))),
 // }));
-
 
 // // Router setup
 // export const router = createBrowserRouter([
@@ -86,9 +85,6 @@
 //   },
 //   { path: "*", element: <NotFound /> },
 // ]);
-
-
-
 
 // import { createBrowserRouter } from "react-router-dom";
 // import AboutUs from "../../Screens/About_Us";
@@ -175,10 +171,6 @@
 //   },
 // ]);
 
-
-
-
-
 import { createBrowserRouter } from "react-router-dom";
 import Login from "../../Screens/Auth/Login";
 import Register from "../../Screens/Auth/Register";
@@ -189,7 +181,10 @@ import SetPassword from "../../Screens/Auth/setPassword";
 import ForgotPassword from "../../Screens/Auth/ForgotPassword";
 import Email from "../../Screens/Auth/email";
 import Dashboard from "../../Screens/Dashboard";
- 
+import Profile from "../../Screens/Profile";
+import Form from "../../Screens/Form";
+import Attendence from "../../Screens/Attendence";
+
 // import NotFound from "../../Screens/NotFound";
 
 export const router = createBrowserRouter([
@@ -201,7 +196,18 @@ export const router = createBrowserRouter([
         index: true,
         element: <Dashboard />,
       },
-      // { path: "*", element: <NotFound /> },
+      {
+        path: "/profile",
+        element: <Profile />,
+      },
+      {
+        path: "/form-submission",
+        element: <Form />,
+      },
+      {
+        path: "/attendance-report",
+        element: <Attendence />,
+      },
     ],
   },
   {
